@@ -3,10 +3,15 @@ import HomeScreen from "./pages";
 import RewardScreen from "./pages/rewards";
 import StatsScreen from "./pages/stats";
 import { Box, Title } from "@nimbus-ds/components";
+import type { Dispatch, SetStateAction } from "react";
 
 type TabName = "index" | "rewards" | "stats";
 
-function Bar({ setSelectedTab }) {
+function Bar({
+  setSelectedTab,
+}: {
+  setSelectedTab: Dispatch<SetStateAction<TabName>>;
+}) {
   return (
     <Box display="flex" flexDirection="row" justifyContent="space-evenly">
       {[
@@ -18,7 +23,7 @@ function Bar({ setSelectedTab }) {
           <Box
             key={tabName}
             onClick={() => {
-              setSelectedTab(tabName);
+              setSelectedTab(tabName as TabName);
             }}
           >
             <Title as="h3">{tabTitle}</Title>
